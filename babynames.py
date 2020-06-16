@@ -63,7 +63,7 @@ def extract_names(filename):
     for name in dict_keys:
         name.append(name + ' ' + names_dict[name])
     return names
-# print(extract_names('baby1992.html'))
+print(extract_names('baby1992.html'))
 
 def create_parser():
     """Create a command line parser object with 2 argument definitions."""
