@@ -50,7 +50,8 @@ def extract_names(filename):
     year_match = re.search(r'Popularity in (\d\d\d\d)', text_read)
     names.append(year_match.group(1))
 
-    baby_name_rank = re.findall(r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', text_read)
+    baby_name_rank = re.findall(
+        r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', text_read)
     names_dict = {}
 
     for name_rank in baby_name_rank:
@@ -61,9 +62,12 @@ def extract_names(filename):
 
     dict_keys = sorted(names_dict.keys())
     for name in dict_keys:
-        name.append(name + ' ' + names_dict[name])
+        names.append(name + ' ' + names_dict[name])
     return names
+
+
 print(extract_names('baby1992.html'))
+
 
 def create_parser():
     """Create a command line parser object with 2 argument definitions."""
@@ -106,6 +110,7 @@ def main(args):
             with open(filename + '.summary', 'w') as file:
                 file.write(structured_list)
         print(structured_list)
+
 
 if __name__ == '__main__':
     print(sys.argv)
