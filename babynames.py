@@ -66,9 +66,6 @@ def extract_names(filename):
     return names
 
 
-print(extract_names('baby1992.html'))
-
-
 def create_parser():
     """Create a command line parser object with 2 argument definitions."""
     parser = argparse.ArgumentParser(
