@@ -30,6 +30,8 @@ Suggested milestones for incremental development:
  - Build the [year, 'name rank', ... ] list and print it
  - Fix main() to use the extracted_names list
 """
+__author__ = "Mavrick Watts, Jo Anna Mollman, written by Kathryn Anderson"
+
 
 import sys
 import re
