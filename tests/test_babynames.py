@@ -20,7 +20,7 @@ except ImportError:
 # import soln.babynames as babynames
 import babynames
 
-__author__ = "madarp"
+__author__ = "Kathryn Anderson"
 
 
 class Capturing(list):

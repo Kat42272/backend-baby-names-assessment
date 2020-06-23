@@ -108,9 +108,9 @@ def main(args):
         if create_summary:
             with open(filename + '.summary', 'w') as file:
                 file.write(structured_list)
-        print(structured_list)
+        else:
+            print(structured_list)
 
 
 if __name__ == '__main__':
-    print(sys.argv)
     main(sys.argv[1:])
