@@ -30,6 +30,8 @@ Suggested milestones for incremental development:
  - Build the [year, 'name rank', ... ] list and print it
  - Fix main() to use the extracted_names list
 """
+__author__ = "Mavrick Watts, Jo Anna Mollman, written by Kathryn Anderson"
+
 
 import sys
 import re
@@ -44,7 +46,25 @@ def extract_names(filename):
     ['2006', 'Aaliyah 91', 'Aaron 57', 'Abagail 895', ...]
     """
     names = []
-    # +++your code here+++
+    with open(filename) as f:
+        text_read = f.read()
+
+    year_match = re.search(r'Popularity in (\d\d\d\d)', text_read)
+    names.append(year_match.group(1))
+
+    baby_name_rank = re.findall(
+        r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', text_read)
+    names_dict = {}
+
+    for name_rank in baby_name_rank:
+        if name_rank[1] not in names_dict:
+            names_dict[name_rank[1]] = name_rank[0]
+        if name_rank[2] not in names_dict:
+            names_dict[name_rank[2]] = name_rank[0]
+
+    dict_keys = sorted(names_dict.keys())
+    for name in dict_keys:
+        names.append(name + ' ' + names_dict[name])
     return names
 
 
@@ -82,7 +102,14 @@ def main(args):
     # Use the create_summary flag to decide whether to print the list
     # or to write the list to a summary file (e.g. `baby1990.html.summary`).
 
-    # +++your code here+++
+    for filename in file_list:
+        name_extractor = extract_names(filename)
+        structured_list = '\n'.join(name_extractor)
+        if create_summary:
+            with open(filename + '.summary', 'w') as file:
+                file.write(structured_list)
+        else:
+            print(structured_list)
 
 
 if __name__ == '__main__':

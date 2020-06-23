@@ -20,7 +20,7 @@ except ImportError:
 # import soln.babynames as babynames
 import babynames
 
-__author__ = "madarp"
+__author__ = "Kathryn Anderson"
 
 
 class Capturing(list):
@@ -90,7 +90,9 @@ class TestBabynames(unittest.TestCase):
         self.assertTrue(ns.summaryfile)
 
     def test_extract_names(self):
-        """Extraction, alphabetizing, de-duping, ranking of names from all html files"""
+        """Extraction, alphabetizing,
+        de-duping, ranking of names from all
+        html files"""
         # Is the function callable?
         self.assertTrue(
             callable(babynames.extract_names),
@@ -98,7 +100,8 @@ class TestBabynames(unittest.TestCase):
             )
 
         # Get list of only html files
-        html_file_list = sorted(filter(lambda f: f.endswith('.html'), os.listdir('.')))
+        html_file_list = sorted(filter(
+            lambda f: f.endswith('.html'), os.listdir('.')))
         # Compare each result (actual) list to expected list.
         for f in html_file_list:
             summary_file = os.path.join('tests', f + '.summary')
